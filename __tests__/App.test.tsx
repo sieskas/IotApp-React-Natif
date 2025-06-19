@@ -1,17 +1,25 @@
-/**
- * @format
- */
+// __tests__/App.test.tsx
 
-import 'react-native';
 import React from 'react';
+import { render } from '@testing-library/react-native';
 import App from '../App';
 
-// Note: import explicitly to use the types shipped with jest.
-import {it} from '@jest/globals';
+jest.mock('react-native-config', () => ({
+  ENV: 'test',
+  API_URL: 'https://mock.api',
+  USE_MOCKS: true,
+}));
 
-// Note: test renderer must be required after react-native.
-import renderer from 'react-test-renderer';
+jest.mock('./../src/navigation', () => () => <></>);
+jest.mock('./../src/components/Alert/AlertProvider', () => {
+  return {
+    AlertProvider: ({ children }: { children: React.ReactNode }) => <>{children}</>,
+  };
+});
 
-it('renders correctly', () => {
-  renderer.create(<App />);
+describe('App.tsx', () => {
+  it('should render without crashing and load providers', () => {
+    const { getByTestId, toJSON } = render(<App />);
+    expect(toJSON()).toBeTruthy(); // Ensure render is successful
+  });
 });

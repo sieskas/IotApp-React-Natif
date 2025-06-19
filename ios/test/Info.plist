@@ -48,5 +48,7 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+    <key>API_URL</key>
+    <string>$(API_URL)</string>
 </dict>
 </plist>

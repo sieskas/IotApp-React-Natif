@@ -55,11 +55,15 @@ const SignupScreen: React.FC<SignupScreenProps> = ({ navigation }) => {
       return showError('Veuillez entrer une adresse email valide');
     }
 
+    console.log(password);
+    console.log(confirmPassword);
     if (password !== confirmPassword) {
       return showError('Les mots de passe ne correspondent pas');
     }
 
     if (password.length < 6) {
+      console.log(password.length);
+      console.log(password);
       return showError('Le mot de passe doit contenir au moins 6 caractères');
     }
 
@@ -133,6 +137,10 @@ const SignupScreen: React.FC<SignupScreenProps> = ({ navigation }) => {
                 value={password}
                 onChangeText={setPassword}
                 secureTextEntry
+                textContentType="none"          // Désactive l'auto-password
+                autoComplete="off"              // Désactive l'auto-complétion
+                autoCorrect={false}             // Désactive l'auto-correction
+                autoCapitalize="none"           // Désactive la capitalisation automatique
               />
 
               <InputField
@@ -142,6 +150,10 @@ const SignupScreen: React.FC<SignupScreenProps> = ({ navigation }) => {
                 value={confirmPassword}
                 onChangeText={setConfirmPassword}
                 secureTextEntry
+                textContentType="none"          // Désactive l'auto-password
+                autoComplete="off"              // Désactive l'auto-complétion
+                autoCorrect={false}             // Désactive l'auto-correction
+                autoCapitalize="none"           // Désactive la capitalisation automatique
               />
 
               <Button

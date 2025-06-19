@@ -22,9 +22,9 @@ const InputField: React.FC<InputFieldProps> = ({
                                                  value,
                                                  onChangeText,
                                                  secureTextEntry = false,
-                                                 autoCapitalize,
-                                                 autoCorrect,
-                                                 keyboardType,
+                                                 autoCapitalize = 'none',
+                                                 autoCorrect = false,
+                                                 keyboardType = 'default',
                                                  testID,
                                                  textContentType = 'none',
                                                  autoComplete = 'off',
@@ -50,8 +50,20 @@ const InputField: React.FC<InputFieldProps> = ({
         keyboardType={keyboardType}
         testID={testID}
         placeholderTextColor="#666"
+        // Désactivation complète de l'auto-password iOS
         textContentType={textContentType}
         autoComplete={autoComplete}
+        passwordRules={secureTextEntry ? "" : undefined}
+        autoFocus={false}
+        clearTextOnFocus={false}
+        selectTextOnFocus={false}
+        spellCheck={false}
+        // @ts-ignore - Propriété deprecated mais nécessaire pour compatibilité
+        autoCompleteType="off"
+        // @ts-ignore - Propriétés iOS spécifiques
+        enablesReturnKeyAutomatically={false}
+        // @ts-ignore - Désactiver la détection de données
+        dataDetectorTypes="none"
       />
     </View>
   );

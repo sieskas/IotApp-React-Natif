@@ -19,7 +19,7 @@ jest.mock('./../src/components/Alert/AlertProvider', () => {
 
 describe('App.tsx', () => {
   it('should render without crashing and load providers', () => {
-    const { getByTestId, toJSON } = render(<App />);
+    const {toJSON } = render(<App />);
     expect(toJSON()).toBeTruthy(); // Ensure render is successful
   });
 });

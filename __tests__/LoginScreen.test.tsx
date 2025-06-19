@@ -2,7 +2,7 @@ import React from 'react';
 import { render, fireEvent, waitFor } from '@testing-library/react-native';
 import LoginScreen from '../src/screens/LoginScreen';
 
-const mockShowError = jest.fn(); // ✅ autorisé car préfixé par 'mock'
+const mockShowError = jest.fn();
 
 jest.mock('@react-navigation/native', () => ({
   useNavigation: () => ({ navigate: jest.fn(), replace: jest.fn() }),

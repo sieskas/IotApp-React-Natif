@@ -1,7 +1,8 @@
+// e2e/LoginScreen.e2e.ts
+
 describe('Welcome Screen', () => {
   beforeAll(async () => {
     await device.launchApp();
-    // Forcez le reload pour être sûr
     await device.reloadReactNative();
   });
 

@@ -11,11 +11,11 @@ describe('LoginScreen E2E', () => {
       .toBeVisible()
       .withTimeout(5000);
 
-    expect(element(by.id('logo-text'))).toBeVisible();
-    expect(element(by.id('username-input'))).toBeVisible();
-    expect(element(by.id('password-input'))).toBeVisible();
-    expect(element(by.id('login-button'))).toBeVisible();
-    expect(element(by.id('signup-button'))).toBeVisible();
+   await expect(element(by.id('logo-text'))).toBeVisible();
+   await expect(element(by.id('username-input'))).toBeVisible();
+   await expect(element(by.id('password-input'))).toBeVisible();
+   await expect(element(by.id('login-button'))).toBeVisible();
+   await expect(element(by.id('signup-button'))).toBeVisible();
   });
 
   it('should show error if no credentials entered', async () => {

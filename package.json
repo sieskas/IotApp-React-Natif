@@ -16,7 +16,9 @@
     "android:dev": "ENVFILE=.env.dev react-native run-android",
     "android:prod": "ENVFILE=.env.prod react-native run-android",
     "test:e2e:ios:mock": "detox build --configuration ios.sim.release && detox test --configuration ios.sim.release",
-    "test:e2e:android:mock": "detox build --configuration android.emu.release && detox test --configuration android.emu.release"
+    "test:e2e:android:mock": "detox build --configuration android.emu.release && detox test --configuration android.emu.release",
+
+    "test:all": "jest && npm run test:e2e:ios:mock && npm run test:e2e:android:mock"
   },
   "dependencies": {
     "@react-navigation/native": "^7.1.12",

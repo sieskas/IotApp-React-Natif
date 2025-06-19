@@ -12,7 +12,8 @@
     "target": "esnext",
     "resolveJsonModule": true,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "types": ["detox/globals", "jest"]
   },
   "include": [
     "src/**/*",

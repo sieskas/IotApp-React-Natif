@@ -20,12 +20,12 @@ describe('SignupScreen E2E', () => {
   });
 
   it('should show all input fields and buttons', async () => {
-    await expect(element(by.id('signup-username-input'))).toBeVisible();
-    await expect(element(by.id('signup-email-input'))).toBeVisible();
-    await expect(element(by.id('signup-password-input'))).toBeVisible();
-    await expect(element(by.id('signup-confirm-password-input'))).toBeVisible();
-    await expect(element(by.id('signup-submit-button'))).toBeVisible();
-    await expect(element(by.id('back-to-login-button'))).toBeVisible();
+    expect(element(by.id('signup-username-input'))).toBeVisible();
+    expect(element(by.id('signup-email-input'))).toBeVisible();
+    expect(element(by.id('signup-password-input'))).toBeVisible();
+    expect(element(by.id('signup-confirm-password-input'))).toBeVisible();
+    expect(element(by.id('signup-submit-button'))).toBeVisible();
+    expect(element(by.id('back-to-login-button'))).toBeVisible();
   });
 
   it('should show error on empty submit', async () => {

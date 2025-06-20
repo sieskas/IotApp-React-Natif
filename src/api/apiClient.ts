@@ -68,7 +68,39 @@ class ApiClient {
         }
     }
 
-    // Ajoutez d'autres méthodes HTTP si nécessaire (PUT, DELETE, etc.)
+    async put<T>(url: string, data?: any, config?: AxiosRequestConfig): Promise<ApiResponse<T>> {
+        try {
+            const response = await this.axiosInstance.put<T>(url, data, config);
+            return {
+                data: response.data,
+                status: response.status,
+            };
+        } catch (error: any) {
+            return {
+                data: {} as T,
+                status: error.response?.status || 500,
+                error: error.message,
+            };
+        }
+    }
+
+    async delete<T>(url: string, config?: AxiosRequestConfig): Promise<ApiResponse<T>> {
+        try {
+            const response = await this.axiosInstance.delete<T>(url, config);
+            return {
+                data: response.data,
+                status: response.status,
+            };
+        } catch (error: any) {
+            return {
+                data: {} as T,
+                status: error.response?.status || 500,
+                error: error.message,
+            };
+        }
+    }
+
+    // Ajoutez d'autres méthodes HTTP si nécessaire
 }
 
 export default new ApiClient();

@@ -1,5 +1,6 @@
 // src/navigation/RootNavigation.ts
 import { createRef } from 'react';
+import { NavigationContainerRef } from '@react-navigation/native';
 
 // Définir un type générique pour la référence de navigation
 type NavigationRef = {
@@ -8,11 +9,11 @@ type NavigationRef = {
   reset: (state: any) => void;
 };
 
-export const navigationRef = createRef<NavigationRef>();
+export const navigationRef = createRef<NavigationContainerRef<any>>();
 
 export function navigate(name: string, params?: object) {
   if (navigationRef.current) {
-    navigationRef.current.navigate(name, params);
+    (navigationRef.current as any).navigate(name, params);
   }
 }
 

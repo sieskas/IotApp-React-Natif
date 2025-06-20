@@ -4,12 +4,12 @@
   "private": true,
   "scripts": {
     "pod-install": "cd ios && bundle exec pod install && cd ..",
+    "verify:ts": "tsc --noEmit --skipLibCheck",
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "lint": "eslint .",
     "start": "react-native start",
     "start:windows": "cmd /c start-windows.bat",
-
     "test": "jest",
     "ios:mock": "react-native run-ios --scheme \"MonApp-test\" --simulator \"iPhone 16\"",
     "ios:dev": "react-native run-ios --scheme \"MonApp-dev\" --simulator \"iPhone 16\"",
@@ -20,10 +20,10 @@
     "test:e2e:ios:mock": "detox build --configuration ios.sim.release && detox test --configuration ios.sim.release",
     "test:e2e:android:mock": "detox build --configuration android.emu.release && detox test --configuration android.emu.release",
     "test:e2e:windows:android:mock": "cmd /c test-e2e-windows.bat",
-
     "test:all": "jest && npm run test:e2e:ios:mock && npm run test:e2e:android:mock"
   },
   "dependencies": {
+    "@react-native-picker/picker": "^2.11.0",
     "@react-navigation/native": "^7.1.12",
     "@react-navigation/stack": "^7.3.5",
     "@testing-library/react-native": "^13.2.0",

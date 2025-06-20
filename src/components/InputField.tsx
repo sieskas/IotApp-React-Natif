@@ -14,6 +14,7 @@ interface InputFieldProps {
   testID?: string;
   textContentType?: 'none' | 'URL' | 'addressCity' | 'addressCityAndState' | 'addressState' | 'countryName' | 'creditCardNumber' | 'emailAddress' | 'familyName' | 'fullStreetAddress' | 'givenName' | 'jobTitle' | 'location' | 'middleName' | 'name' | 'namePrefix' | 'nameSuffix' | 'nickname' | 'organizationName' | 'postalCode' | 'streetAddressLine1' | 'streetAddressLine2' | 'sublocality' | 'telephoneNumber' | 'username' | 'password' | 'newPassword' | 'oneTimeCode';
   autoComplete?: 'off' | 'username' | 'password' | 'email' | 'name' | 'tel' | 'street-address' | 'postal-code' | 'cc-number' | 'cc-csc' | 'cc-exp' | 'cc-exp-month' | 'cc-exp-year';
+  error?: string;
 }
 
 const InputField: React.FC<InputFieldProps> = ({
@@ -28,6 +29,7 @@ const InputField: React.FC<InputFieldProps> = ({
                                                  testID,
                                                  textContentType = 'none',
                                                  autoComplete = 'off',
+                                                 error,
                                                }) => {
   return (
     <View style={styles.container} testID={testID ? `${testID}-container` : undefined}>
@@ -40,7 +42,7 @@ const InputField: React.FC<InputFieldProps> = ({
         </Text>
       )}
       <TextInput
-        style={styles.input}
+        style={[styles.input, error && styles.errorInput]}
         placeholder={placeholder}
         value={value}
         onChangeText={onChangeText}
@@ -65,6 +67,11 @@ const InputField: React.FC<InputFieldProps> = ({
         // @ts-ignore - Désactiver la détection de données
         dataDetectorTypes="none"
       />
+      {error && (
+        <Text style={styles.errorText} testID={testID ? `${testID}-error` : undefined}>
+          {error}
+        </Text>
+      )}
     </View>
   );
 };
@@ -84,6 +91,15 @@ const styles = StyleSheet.create({
     padding: 12,
     fontSize: 16,
     color: '#FFF',
+  },
+  errorInput: {
+    borderColor: 'red',
+    borderWidth: 1,
+  },
+  errorText: {
+    fontSize: 14,
+    color: 'red',
+    marginTop: 4,
   },
 });
 

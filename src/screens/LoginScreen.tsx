@@ -48,7 +48,7 @@ const LoginScreen: React.FC = () => {
       // 👇 NOUVEAU - Alerte de succès
       showSuccess('Connexion réussie !');
       // Naviguer vers l'écran principal en cas de succès
-      navigation.replace('Home');
+      navigation.replace('Locations');
     } else {
       // L'erreur est déjà gérée par le hook useApi
       console.error(result.error);

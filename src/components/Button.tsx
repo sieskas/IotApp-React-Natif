@@ -17,7 +17,7 @@ interface ButtonProps {
   textStyle?: StyleProp<TextStyle>;
   loading?: boolean;
   disabled?: boolean;
-  variant?: 'primary' | 'secondary';
+  variant?: 'primary' | 'secondary' | 'outline';
   testID?: string;
 }
 
@@ -33,14 +33,14 @@ const Button: React.FC<ButtonProps> = ({
                                        }) => {
   const buttonStyles = [
     styles.button,
-    variant === 'primary' ? styles.primaryButton : styles.secondaryButton,
+    variant === 'primary' ? styles.primaryButton : variant === 'secondary' ? styles.secondaryButton : variant === 'outline' ? styles.outlineButton : {},
     disabled && styles.disabledButton,
     style,
   ];
 
   const textStyles = [
     styles.text,
-    variant === 'primary' ? styles.primaryText : styles.secondaryText,
+    variant === 'primary' ? styles.primaryText : variant === 'secondary' ? styles.secondaryText : variant === 'outline' ? styles.outlineText : {},
     disabled && styles.disabledText,
     textStyle,
   ];
@@ -60,7 +60,7 @@ const Button: React.FC<ButtonProps> = ({
     >
       {loading ? (
         <ActivityIndicator
-          color={variant === 'primary' ? 'white' : '#2979FF'}
+          color={variant === 'primary' ? 'white' : variant === 'secondary' ? '#2979FF' : '#2979FF'}
           testID={testID ? `${testID}-loading-indicator` : undefined}
         />
       ) : (
@@ -92,6 +92,11 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#2979FF',
   },
+  outlineButton: {
+    backgroundColor: 'transparent',
+    borderWidth: 1,
+    borderColor: '#2979FF',
+  },
   disabledButton: {
     backgroundColor: '#BDBDBD',
     borderColor: '#BDBDBD',
@@ -105,6 +110,9 @@ const styles = StyleSheet.create({
     color: 'white',
   },
   secondaryText: {
+    color: '#2979FF',
+  },
+  outlineText: {
     color: '#2979FF',
   },
   disabledText: {
